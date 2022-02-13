@@ -2,7 +2,7 @@
 import os
 import csv
 
-#joining path
+#joining path with the folder containing the CSV file.
 budget_data = os.path.join("c:/Users/Lincoln/Desktop/Personal/UZ MDS/Adv Programming for Data Analytics/python-challenge/PyBank/Resources", "budget_data.csv")
 
 # open and read csv
@@ -12,22 +12,22 @@ with open(budget_data, newline="") as csvfile:
     # skip header row
     print(f"Header: {csv_header}")
 
-    # find net amount of profit and loss
-    P = []
+    # find net amount of profit and loss by creating empty lists Profit/Losses and months respectively
+    Profit/Losses = []
     months = []
 
     #read through each row of data after header
     for rows in csvreader:
-        P.append(int(rows[1]))
+        Profit/Losses.append(int(rows[1]))
         months.append(rows[0])
 
-    # find revenue change
+    # Creating a revenue change list to be used in the calculations of net Profit or Loss
     revenue_change = []
 
-    for x in range(1, len(P)):
-        revenue_change.append((int(P[x]) - int(P[x-1])))
+    for x in range(1, len(Profit/Losses)):
+        revenue_change.append((int(Profit/Losses[x]) - int(Profit/Losses[x-1])))
     
-    # calculate average revenue change
+    # calculate average revenue change by getting the quotient of the total revenue change and the frequency. 
     revenue_average = sum(revenue_change) / len(revenue_change)
     
     # calculate total length of months
@@ -44,11 +44,11 @@ with open(budget_data, newline="") as csvfile:
 
     print("....................................................................................")
 
-    print("total months: " + str(total_months))
+    print("Total months: " + str(total_months))
 
     print("Total: " + "$" + str(sum(P)))
 
-    print("Average change: " + "$" + str(revenue_average))
+    print("Average Change: " + "$" + str(revenue_average))
 
     print("Greatest Increase in Profits: " + str(months[revenue_change.index(max(revenue_change))+1]) + " " + "$" + str(greatest_increase))
 
