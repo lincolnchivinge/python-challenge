@@ -13,19 +13,19 @@ with open(budget_data, newline="") as csvfile:
     print(f"Header: {csv_header}")
 
     # find net amount of profit and loss by creating empty lists Profit/Losses and months respectively
-    Profit/Losses = []
+    Profit_Losses = []
     months = []
 
     #read through each row of data after header
     for rows in csvreader:
-        Profit/Losses.append(int(rows[1]))
+        Profit_Losses.append(int(rows[1]))
         months.append(rows[0])
 
     # Creating a revenue change list to be used in the calculations of net Profit or Loss
     revenue_change = []
 
-    for x in range(1, len(Profit/Losses)):
-        revenue_change.append((int(Profit/Losses[x]) - int(Profit/Losses[x-1])))
+    for x in range(1, len(Profit_Losses)):
+        revenue_change.append((int(Profit_Losses[x]) - int(Profit_Losses[x-1])))
     
     # calculate average revenue change by getting the quotient of the total revenue change and the frequency. 
     revenue_average = sum(revenue_change) / len(revenue_change)
@@ -46,7 +46,7 @@ with open(budget_data, newline="") as csvfile:
 
     print("Total months: " + str(total_months))
 
-    print("Total: " + "$" + str(sum(P)))
+    print("Total: " + "$" + str(sum(Profit_Losses)))
 
     print("Average Change: " + "$" + str(revenue_average))
 
@@ -65,7 +65,7 @@ with open(budget_data, newline="") as csvfile:
 
     file.write("total months: " + str(total_months) + "\n")
 
-    file.write("Total: " + "$" + str(sum(P)) + "\n")
+    file.write("Total: " + "$" + str(sum(Profit_Losses)) + "\n")
 
     file.write("Average change: " + "$" + str(revenue_average) + "\n")
 
