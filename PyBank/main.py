@@ -42,7 +42,7 @@ with open(budget_data, newline="") as csvfile:
     # print the Results
     print("Financial Analysis")
 
-    print("....................................................................................")
+    print("......................................................................................")
 
     print("Total months: " + str(total_months))
 
